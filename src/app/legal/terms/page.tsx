@@ -11,9 +11,7 @@ export default function TermsPage() {
         Terms &amp; conditions (summary)
       </h1>
       <p className="max-w-2xl text-sm text-muted-foreground md:text-base">
-        This page is a placeholder. Replace it with your official terms of
-        service, including acceptable use, limitations of liability, and other
-        contractual details relevant to Mediyum ZA&apos;s services.
+        I will add this section soon.
       </p>
     </div>
   );
