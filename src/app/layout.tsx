@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { siteConfig } from "@/lib/site-config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,9 +16,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mediyum ZA | IT Solutions (PTY) LTD",
-  description:
-    "Mediyum ZA (PTY) LTD delivers end-to-end IT solutions for South African businesses, including hardware, networking, software development, CCTV, and consulting.",
+  title: siteConfig.name + " | IT Solutions (PTY) LTD",
+  description: siteConfig.tagline,
+  metadataBase: new URL(siteConfig.url),
+  openGraph: {
+    title: siteConfig.name + " | IT Solutions (PTY) LTD",
+    description: siteConfig.tagline,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+  },
 };
 
 export default function RootLayout({

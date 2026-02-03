@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { siteConfig } from "@/lib/site-config";
 
 export const metadata = {
   title: "Shop | Mediyum ZA WooCommerce Store",
@@ -8,24 +9,22 @@ export const metadata = {
     "Visit the Mediyum ZA WooCommerce store for curated hardware, software licenses, and IT service bundles.",
 };
 
-// TODO: Replace placeholder URLs with real WooCommerce endpoints.
-const WOO_BASE_URL = "https://your-woocommerce-store.example.com";
-
 const categories = [
   {
     label: "Business hardware & peripherals",
     description: "Laptops, desktops, servers, UPS, and accessories.",
-    href: `${WOO_BASE_URL}/category/hardware`,
+    href: siteConfig.wooCommerce.categories.hardware,
   },
   {
     label: "Licenses & subscriptions",
-    description: "Productivity suites, security tools, and line-of-business software.",
-    href: `${WOO_BASE_URL}/category/licenses`,
+    description:
+      "Productivity suites, security tools, and line-of-business software.",
+    href: siteConfig.wooCommerce.categories.licenses,
   },
   {
     label: "Managed service bundles",
     description: "Support retainers, monitoring, and maintenance packages.",
-    href: `${WOO_BASE_URL}/category/services`,
+    href: siteConfig.wooCommerce.categories.services,
   },
 ];
 
@@ -42,7 +41,11 @@ export default function ShopPage() {
           tenders, contact our team for a tailored quote.
         </p>
         <Button asChild size="lg">
-          <Link href={WOO_BASE_URL} target="_blank" rel="noreferrer">
+          <Link
+            href={siteConfig.wooCommerce.baseUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
             Go to shop
           </Link>
         </Button>
