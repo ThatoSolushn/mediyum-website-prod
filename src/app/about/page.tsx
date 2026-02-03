@@ -1,5 +1,8 @@
-export const metadata = {
-  title: "About | Mediyum ZA (PTY) LTD",
+import type { Metadata } from "next";
+import { siteConfig } from "@/lib/site-config";
+
+export const metadata: Metadata = {
+  title: `About | ${siteConfig.legalName}`,
   description:
     "Learn about Mediyum ZA (PTY) LTD, our mission, values, and how we deliver reliable IT solutions across South Africa.",
 };

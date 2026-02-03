@@ -1,4 +1,6 @@
-export const metadata = {
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
   title: "Blog | Mediyum ZA Insights",
   description:
     "Articles and updates from Mediyum ZA on infrastructure, networking, software, security, and surveillance.",

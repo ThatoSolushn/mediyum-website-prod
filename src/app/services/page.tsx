@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -35,7 +36,7 @@ const services = [
   },
 ];
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Services | Mediyum ZA IT Solutions",
   description:
     "Explore Mediyum ZA's IT services across hardware, networking, software development, CCTV, and consulting.",
