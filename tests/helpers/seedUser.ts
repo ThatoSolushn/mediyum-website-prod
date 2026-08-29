@@ -1,9 +1,13 @@
 import { getPayload } from 'payload'
+
+import type { User } from '../../src/payload-types.js'
 import config from '../../src/payload.config.js'
 
-export const testUser = {
-  email: 'dev@payloadcms.com',
+export const testUser: Pick<User, 'email' | 'roles'> & { password: string } = {
+  email: 'dev@mediyumza.co.za',
   password: 'test',
+  // Admin-panel tests need a staff role; 'customer' cannot reach /admin.
+  roles: ['admin'],
 }
 
 /**
