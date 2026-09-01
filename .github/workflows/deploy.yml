@@ -1,0 +1,73 @@
+name: Build and deploy
+
+# The deploy host is a 4GB VPS that also runs Coolify itself. Building there
+# exhausts its memory during `npm ci`, so the image is built here and the host
+# only pulls it.
+#
+# push to main   -> build, push to GHCR, trigger the Coolify redeploy
+# pull request   -> build only, to prove the image still builds before merge
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GHCR
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Derive tags
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha,format=long
+
+      - name: Build${{ github.event_name != 'pull_request' && ' and push' || '' }}
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Trigger Coolify deployment
+        if: github.event_name == 'push' && vars.COOLIFY_WEBHOOK_URL != ''
+        env:
+          TOKEN: ${{ secrets.COOLIFY_TOKEN }}
+        run: |
+          curl --fail --silent --show-error \
+            -X GET "${{ vars.COOLIFY_WEBHOOK_URL }}" \
+            -H "Authorization: Bearer ${TOKEN}"
