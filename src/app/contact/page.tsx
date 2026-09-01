@@ -31,12 +31,10 @@ export default function ContactPage() {
             <h2 className="text-sm font-semibold text-foreground">
               Direct contact
             </h2>
-            <p className="mt-1 text-xs text-muted-foreground">
-              Replace these placeholders with your real contact details.
-            </p>
+            {/* Phone line intentionally omitted until a real number is supplied.
+                Add it here as: <p>Phone: +27 ...</p> */}
             <div className="mt-3 space-y-1 text-sm">
               <p>Email: info@mediyumza.co.za</p>
-              <p>Phone: +27 (0)00 000 0000</p>
               <p>Hours: Monday – Friday, 08:00–17:00 SAST</p>
             </div>
           </div>

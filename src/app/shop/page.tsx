@@ -1,30 +1,26 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { siteConfig } from "@/lib/site-config";
 
 export const metadata = {
-  title: "Shop | Mediyum ZA WooCommerce Store",
+  title: "Shop | Mediyum ZA",
   description:
-    "Visit the Mediyum ZA WooCommerce store for curated hardware, software licenses, and IT service bundles.",
+    "Hardware, software licenses, and IT service bundles supplied by Mediyum ZA. Request a quote for your requirements.",
 };
 
 const categories = [
   {
     label: "Business hardware & peripherals",
     description: "Laptops, desktops, servers, UPS, and accessories.",
-    href: siteConfig.wooCommerce.categories.hardware,
   },
   {
     label: "Licenses & subscriptions",
     description:
       "Productivity suites, security tools, and line-of-business software.",
-    href: siteConfig.wooCommerce.categories.licenses,
   },
   {
     label: "Managed service bundles",
     description: "Support retainers, monitoring, and maintenance packages.",
-    href: siteConfig.wooCommerce.categories.services,
   },
 ];
 
@@ -33,21 +29,15 @@ export default function ShopPage() {
     <div className="space-y-10">
       <section className="space-y-4">
         <h1 className="text-2xl font-semibold tracking-tight md:text-3xl">
-          WooCommerce-powered shop
+          What we supply
         </h1>
         <p className="max-w-2xl text-sm text-muted-foreground md:text-base">
-          Purchase recommended hardware, software licenses, and service bundles
-          directly through our secure WooCommerce store. For complex projects or
-          tenders, contact our team for a tailored quote.
+          We source and supply business hardware, software licenses, and service
+          bundles alongside our project work. Tell us what you need and we will
+          come back with availability and pricing.
         </p>
         <Button asChild size="lg">
-          <Link
-            href={siteConfig.wooCommerce.baseUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Go to shop
-          </Link>
+          <Link href="/contact">Request a quote</Link>
         </Button>
       </section>
 
@@ -59,13 +49,8 @@ export default function ShopPage() {
                 {category.label}
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3 pb-5 text-sm text-muted-foreground">
+            <CardContent className="pb-5 text-sm text-muted-foreground">
               <p>{category.description}</p>
-              <Button asChild size="sm" variant="outline">
-                <Link href={category.href} target="_blank" rel="noreferrer">
-                  View on shop
-                </Link>
-              </Button>
             </CardContent>
           </Card>
         ))}
@@ -73,4 +58,3 @@ export default function ShopPage() {
     </div>
   );
 }
-

@@ -29,7 +29,7 @@ const services = [
 export default function Home() {
   return (
     <div className="space-y-16">
-      <section className="relative overflow-hidden rounded-3xl border border-border/60 bg-gradient-to-br from-background via-background to-slate-950/80 px-6 py-10 shadow-sm md:px-10 md:py-14">
+      <section className="relative overflow-hidden rounded-3xl border border-border/60 bg-gradient-to-br from-card via-card to-background px-6 py-10 shadow-sm md:px-10 md:py-14">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.18),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(59,130,246,0.2),_transparent_55%)]" />
         <div className="pointer-events-none absolute inset-0 -z-10 bg-grid-pattern opacity-50 [mask-image:radial-gradient(circle_at_top,_black,_transparent_65%)]" />
 
@@ -39,10 +39,10 @@ export default function Home() {
               End-to-end IT solutions in South Africa
             </Badge>
             <div className="space-y-3">
-              <h1 className="text-balance text-3xl font-semibold tracking-tight text-slate-50 md:text-4xl lg:text-5xl">
+              <h1 className="text-balance text-3xl font-semibold tracking-tight text-foreground md:text-4xl lg:text-5xl">
                 Your full-stack IT partner for modern, secure businesses.
               </h1>
-              <p className="text-balance text-sm text-slate-200/80 md:text-base">
+              <p className="text-balance text-sm text-muted-foreground md:text-base">
                 Mediyum ZA (PTY) LTD designs, deploys, and supports integrated IT
                 solutions across hardware, networking, software development,
                 CCTV, and consulting — so your teams stay online, secure, and
@@ -53,23 +53,23 @@ export default function Home() {
               <Button asChild size="lg">
                 <Link href="/services">View services</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-slate-500/60 bg-slate-900/40 text-slate-100 hover:bg-slate-800/80">
+              <Button asChild size="lg" variant="outline">
                 <Link href="/contact">Contact sales</Link>
               </Button>
             </div>
-            <p className="text-xs text-slate-300/70">
+            <p className="text-xs text-muted-foreground">
               Serving SMEs and enterprises across South Africa with on-site and
               remote support.
             </p>
           </div>
 
           <div className="grid w-full max-w-md gap-4 md:max-w-sm">
-            <Card className="border-slate-700/70 bg-slate-900/80 shadow-lg shadow-cyan-500/10">
+            <Card className="border-border bg-card shadow-lg shadow-cyan-500/10">
               <CardContent className="space-y-3 p-5">
                 <p className="text-xs font-medium uppercase tracking-[0.18em] text-cyan-300/80">
                   Core capabilities
                 </p>
-                <ul className="space-y-1.5 text-sm text-slate-200/90">
+                <ul className="space-y-1.5 text-sm text-muted-foreground">
                   <li>• Network design, Wi‑Fi, and secure remote access</li>
                   <li>• On-prem and cloud infrastructure rollouts</li>
                   <li>• Line-of-business software and integrations</li>
@@ -78,19 +78,19 @@ export default function Home() {
                 </ul>
               </CardContent>
             </Card>
-            <Card className="border-slate-800/70 bg-slate-950/60 backdrop-blur">
-              <CardContent className="flex items-center justify-between gap-4 p-5 text-xs text-slate-200/90">
+            <Card className="border-border bg-background/60 backdrop-blur">
+              <CardContent className="flex items-center justify-between gap-4 p-5 text-xs text-muted-foreground">
                 <div>
-                  <p className="font-medium text-slate-100">
+                  <p className="font-medium text-foreground">
                     Need hardware or licenses today?
                   </p>
-                  <p className="mt-1 text-[11px] text-slate-300/80">
-                    Visit our WooCommerce-powered shop for curated equipment and
-                    service packages.
+                  <p className="mt-1 text-[11px] text-muted-foreground">
+                    We supply business hardware, licenses, and service bundles
+                    alongside our project work.
                   </p>
                 </div>
-                <Button asChild size="sm" variant="outline" className="shrink-0 border-cyan-400/60 text-cyan-100 hover:bg-cyan-500/10">
-                  <Link href="/shop">Go to shop</Link>
+                <Button asChild size="sm" variant="outline" className="shrink-0">
+                  <Link href="/shop">See what we supply</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -112,7 +112,7 @@ export default function Home() {
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
             <Card key={service.title} className="relative overflow-hidden border-border/70 bg-card/80">
-              <div className="pointer-events-none absolute inset-px rounded-2xl border border-white/5 bg-gradient-to-br from-cyan-500/5 via-transparent to-slate-900/60" />
+              <div className="pointer-events-none absolute inset-px rounded-2xl border border-white/5 bg-gradient-to-br from-cyan-500/5 via-transparent to-background/60" />
               <CardContent className="relative space-y-2 p-5">
                 <h3 className="text-sm font-semibold">{service.title}</h3>
                 <p className="text-xs text-muted-foreground md:text-sm">
