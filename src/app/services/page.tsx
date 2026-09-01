@@ -46,7 +46,7 @@ export default function ServicesPage() {
   return (
     <div className="space-y-10">
       <section className="space-y-4">
-        <Badge className="bg-primary/10 text-primary">Services</Badge>
+        <Badge className="bg-primary/10 text-primary-accent">Services</Badge>
         <div className="space-y-3">
           <h1 className="text-2xl font-semibold tracking-tight md:text-3xl">
             Holistic IT solutions under one roof.
@@ -72,7 +72,7 @@ export default function ServicesPage() {
               <div className="pt-2">
                 <Link
                   href="/contact"
-                  className="text-xs font-medium text-primary underline-offset-2 hover:underline"
+                  className="text-xs font-medium text-primary-accent underline-offset-2 hover:underline"
                 >
                   Discuss this service
                 </Link>

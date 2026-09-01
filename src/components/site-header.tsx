@@ -1,15 +1,8 @@
 import Link from "next/link";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
-
-const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/shop", label: "Shop" },
-  { href: "/contact", label: "Contact" },
-  { href: "/blog", label: "Blog" },
-];
+import { MobileNav } from "@/components/mobile-nav";
+import { navItems } from "@/lib/nav";
 
 export function SiteHeader() {
   return (
@@ -50,9 +43,10 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2 md:hidden">
-          <Button asChild size="sm" variant="outline">
+          <Button asChild size="sm">
             <Link href="/contact">Contact</Link>
           </Button>
+          <MobileNav />
         </div>
       </div>
     </header>
